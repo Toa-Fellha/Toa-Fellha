@@ -1,21 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Page</title>
-    <style>
-        /* Minimal styling to confirm the file is loading */
-        body {
-            font-family: sans-serif;
-            text-align: center;
-            margin-top: 20%;
-            background-color: #f4f4f4;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Click to Enter</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #splash, #main {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s ease;
+    }
+
+    #click-zone {
+      width: 120px;
+      height: 120px;
+      background: #ff0066;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 20px #ff0066;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    #click-zone:hover {
+      transform: scale(1.1);
+    }
+
+    #main {
+      display: none;
+      flex-direction: column;
+      background: linear-gradient(135deg, #222, #333);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is a test page for GitHub Pages.</p>
+
+  <div id="splash">
+    <div id="click-zone">Click Me</div>
+  </div>
+
+  <div id="main">
+    <h1>Hi There</h1>
+  </div>
+
+  <script>
+    const clickZone = document.getElementById("click-zone");
+    const splash = document.getElementById("splash");
+    const main = document.getElementById("main");
+
+    clickZone.addEventListener("click", () => {
+      splash.style.opacity = "0";
+      setTimeout(() => {
+        splash.style.display = "none";
+        main.style.display = "flex";
+      }, 800);
+    });
+  </script>
+
 </body>
 </html>
